@@ -1,7 +1,7 @@
 
 package br.dev.thaissa.OSApiApplication.api.controller;
 
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Cliente;
 import br.dev.thaissa.OSApiApplication.domain.repository.ClienteRepository;
 import br.dev.thaissa.OSApiApplication.domain.service.ClienteService;
 import jakarta.validation.Valid;

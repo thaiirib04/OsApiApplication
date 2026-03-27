@@ -1,7 +1,7 @@
 
 package br.dev.thaissa.OSApiApplication.domain.repository;
 
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Cliente;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

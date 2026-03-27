@@ -1,6 +1,5 @@
 package br.dev.thaissa.OSApiApplication.domain.model;
 
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

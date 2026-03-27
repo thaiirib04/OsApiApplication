@@ -1,5 +1,5 @@
 
-package br.dev.thaissa.OSApiApplication.domain.mode;
+package br.dev.thaissa.OSApiApplication.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

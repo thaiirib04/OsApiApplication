@@ -4,7 +4,7 @@
  */
 package br.dev.thaissa.OSApiApplication.domain.repository;
 
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Cliente;
 import br.dev.thaissa.OSApiApplication.domain.model.OrdemServico;
 import br.dev.thaissa.OSApiApplication.domain.model.StatusOrdemServico;
 import java.time.LocalDateTime;

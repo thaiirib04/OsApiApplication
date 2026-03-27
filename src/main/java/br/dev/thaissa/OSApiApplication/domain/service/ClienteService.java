@@ -2,7 +2,7 @@
 package br.dev.thaissa.OSApiApplication.domain.service;
 
 import br.dev.thaissa.OSApiApplication.domain.exception.DomainException;
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Cliente;
 import br.dev.thaissa.OSApiApplication.domain.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

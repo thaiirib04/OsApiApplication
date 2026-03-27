@@ -1,16 +1,20 @@
 package br.dev.thaissa.OSApiApplication.domain.service;
 
+import br.dev.thaissa.OSApiApplication.domain.dto.ComentarioDTO;
 import br.dev.thaissa.OSApiApplication.domain.exception.DomainException;
-import br.dev.thaissa.OSApiApplication.domain.mode.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Cliente;
+import br.dev.thaissa.OSApiApplication.domain.model.Comentario;
 import br.dev.thaissa.OSApiApplication.domain.model.OrdemServico;
 import br.dev.thaissa.OSApiApplication.domain.model.StatusOrdemServico;
 import br.dev.thaissa.OSApiApplication.domain.repository.ClienteRepository;
 import br.dev.thaissa.OSApiApplication.domain.repository.OrdemServicoRepository;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 @Service
 public class OrdemServicoService {
@@ -74,6 +78,18 @@ public class OrdemServicoService {
         } else {
             throw new DomainException("Não existe OS com o id" + ordemServicoID);
         }
+    }
+    
+    
+    public Comentario adicionarComentario(Long ordemServicoId, ComentarioDTO descricao) {
+        OrdemServico ordemServico = ordemServicoRepository.findById(ordemServicoId)
+                .orElseThrow(() -> new DomainException("Ordem de servico nao encontrada"));
+        Comentario comentario = new Comentario();
+        comentario.setDataEnvio(LocalDateTime.now);
+        comentario.setDescricao(descricao.descricao());
+        comentario.setOrdemServico(ordemServico);
+        
+        return comentarioRepository.save(comentario);
     }
     
 }
