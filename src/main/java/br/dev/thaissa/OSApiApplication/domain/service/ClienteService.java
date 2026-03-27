@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package br.dev.thaissa.OSApiApplication.domain.service;
 
 import br.dev.thaissa.OSApiApplication.domain.exception.DomainException;
@@ -19,7 +16,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
     
-    public Cliente salvar(Cliente clinte) {
+    public Cliente salvar(Cliente cliente) {
         Cliente clienteExistente = clienteRepository.findByEmail(cliente.getEmail());
         
         if(clienteExistente != null && !clienteExistente.equals(cliente)){

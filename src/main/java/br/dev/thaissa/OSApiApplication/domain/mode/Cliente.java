@@ -27,7 +27,6 @@ public class Cliente {
     private String email;
     
     @NotBlank
-    @Email
     @Size(max = 20)
     @Column (name = "telefone")
     private String fone;

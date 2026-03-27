@@ -9,5 +9,5 @@ package br.dev.thaissa.OSApiApplication.domain.model;
  * @author sesi3dib
  */
 public enum StatusOrdemServico {
-    
+    ABERTA, FINALIZADA, CANCELADA
 }
