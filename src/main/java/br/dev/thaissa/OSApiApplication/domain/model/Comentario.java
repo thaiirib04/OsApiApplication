@@ -10,56 +10,31 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 
 @Entity
 public class Comentario {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
-    @NotBlank
-    @Size(max=220)
-    private String descricao;
-    
-    private LocalDateTime dateTime;
-    
-    @JsonIgnore
+     @JsonIgnore
     @JoinColumn(name= "ordemServico-id")
     @ManyToOne
     private OrdemServico ordemServico;
+     
+    
+    private String descricao;
+    private OffsetDateTime dataEnvio;
 
-    public Comentario(long id, String descricao, LocalDateTime dateTime, OrdemServico ordemServico) {
-        this.id = id;
-        this.descricao = descricao;
-        this.dateTime = dateTime;
-        this.ordemServico = ordemServico;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public OrdemServico getOrdemServico() {
@@ -70,40 +45,22 @@ public class Comentario {
         this.ordemServico = ordemServico;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 19 * hash + Objects.hashCode(this.descricao);
-        hash = 19 * hash + Objects.hashCode(this.dateTime);
-        hash = 19 * hash + Objects.hashCode(this.ordemServico);
-        return hash;
+    public String getDescricao() {
+        return descricao;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Comentario other = (Comentario) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.descricao, other.descricao)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateTime, other.dateTime)) {
-            return false;
-        }
-        return Objects.equals(this.ordemServico, other.ordemServico);
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    
-    
+
+    public OffsetDateTime getDataEnvio() {
+        return dataEnvio;
+    }
+
+    public void setDataEnvio(OffsetDateTime dataEnvio) {
+        this.dataEnvio = dataEnvio;
+    }
+
+
     
 }

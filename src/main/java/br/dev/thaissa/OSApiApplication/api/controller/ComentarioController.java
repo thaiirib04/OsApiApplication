@@ -21,15 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @author sesi3dib
  */
 @RestController
+
 public class ComentarioController {
+    
     @Autowired
-    private OrdemServicoService comentarioService;
+    private OrdemServicoService ordemServicoService;
     
     @PostMapping("/ordem-servico/{ordemServicoId}/comentar")
     @ResponseStatus(HttpStatus.CREATED)
     public Comentario adicionarComentario (
-    @PathVariable Long ordemServicoId,
-            @Valid @RequestBody ComentarioDTO comentarioInput) {
-        return comentarioService.comentar(ordemServicoId, comentarioInput);
+            @PathVariable Long ordemServicoId,
+            @Valid @RequestBody ComentarioDTO comentarioDTO) {
+        return ordemServicoService.adicionarComentario(ordemServicoId, comentarioDTO.descricao());
     }
 }

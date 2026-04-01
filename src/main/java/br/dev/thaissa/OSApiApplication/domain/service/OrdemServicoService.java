@@ -7,6 +7,7 @@ import br.dev.thaissa.OSApiApplication.domain.model.Comentario;
 import br.dev.thaissa.OSApiApplication.domain.model.OrdemServico;
 import br.dev.thaissa.OSApiApplication.domain.model.StatusOrdemServico;
 import br.dev.thaissa.OSApiApplication.domain.repository.ClienteRepository;
+import br.dev.thaissa.OSApiApplication.domain.repository.ComentarioRepository;
 import br.dev.thaissa.OSApiApplication.domain.repository.OrdemServicoRepository;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -24,6 +25,9 @@ public class OrdemServicoService {
     
     @Autowired
     private ClienteRepository clienteRepository;
+    
+    @Autowired
+    private ComentarioRepository comentarioRepository;
     
     public OrdemServico criar(OrdemServico ordemServico){
         ordemServico.setStatus(StatusOrdemServico.ABERTA);
@@ -81,12 +85,13 @@ public class OrdemServicoService {
     }
     
     
-    public Comentario adicionarComentario(Long ordemServicoId, ComentarioDTO descricao) {
-        OrdemServico ordemServico = ordemServicoRepository.findById(ordemServicoId)
+    public Comentario adicionarComentario(Long ordemServicoID, String descricao) {
+        OrdemServico ordemServico = ordemServicoRepository.findById(ordemServicoID)
                 .orElseThrow(() -> new DomainException("Ordem de servico nao encontrada"));
+        
         Comentario comentario = new Comentario();
-        comentario.setDataEnvio(LocalDateTime.now);
-        comentario.setDescricao(descricao.descricao());
+        comentario.setDataEnvio(OffsetDateTime.now());
+        comentario.setDescricao(descricao);
         comentario.setOrdemServico(ordemServico);
         
         return comentarioRepository.save(comentario);
